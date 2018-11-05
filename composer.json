@@ -9,6 +9,5 @@
             "email": "david@dream-encode.com"
         }
     ],
-    "minimum-stability": "dev",
-    "require": {}
+    "version": "0.1.0"
 }
