@@ -1,5 +1,5 @@
 <?php
-namespace DE_WordPress_Logger;
+namespace DE_WordPress;
 
 /**
  * Basic logger for WordPress
@@ -11,7 +11,7 @@ namespace DE_WordPress_Logger;
  * @author     David B <david@dream-encode.com>
  */
 
-class DE_WordPress_Logger {
+class Logger {
     /**
      * Current log file
      *
