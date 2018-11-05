@@ -2,7 +2,7 @@
     "name": "dream-encode/de-wordpress-logger",
     "description": "A simple logging class for custom WordPress plugins.",
     "type": "library",
-    "license": "GNU2",
+    "license": "MIT",
     "authors": [
         {
             "name": "David B",
