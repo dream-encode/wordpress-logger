@@ -7,7 +7,7 @@ namespace DE_WordPress;
  * @link       https://dream-encode.com
  * @since      1.0.0
  *
- * @package    DE_WordPress_Logger
+ * @package    DE_WordPress\Logger
  * @author     David B <david@dream-encode.com>
  */
 
