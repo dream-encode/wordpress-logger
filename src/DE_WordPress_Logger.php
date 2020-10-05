@@ -27,15 +27,19 @@ class Logger {
      * @since    1.0.0
      */
     public function __construct() {
+        $default_log_file = plugin_dir_path( __FILE__ ).'debug.log';
 
-        $this->set_file( apply_filters( 'de/wordpress-logger/log-file', plugin_dir_path( __FILE__ ).'debug.log' ) );
+        if ( is_string( WP_DEBUG_LOG ) ) {
+            $default_log_file = WP_DEBUG_LOG;
+        }
 
+        $this->set_file( apply_filters( 'de/wordpress-logger/log-file', $default_log_file ) );
     }
 
     /**
      * Set custom log file location.
-     * 
-     * @param string
+     *
+     * @param string $file Full file path of log file.
      *
      * @since    1.0.0
      */
@@ -46,39 +50,40 @@ class Logger {
     /**
      * Write to log file.
      *
-     * @param mixed
+     * @param mixed $value Data to be logged.
      *
      * @since    1.0.0
      */
     public static function write( $value ) {
         if ( WP_DEBUG ) {
-            if (is_array($value) || is_object($value)) {
-                error_log(print_r($value, true), 3, self::file);
+            if ( is_array( $value ) || is_object( $value ) ) {
+                error_log( print_r( $value, true ), 3, self::file );
             } else {
-                error_log($value, 3, self::file);
+                error_log( $value, 3, self::file );
             }
         }
     }
 
     /**
-     * Write to log file.
+     * Output log content at runtime
      *
-     * @param mixed
+     * @param mixed $value Data to be logged.
+     * @param bool  $exit  Indicates whether current execution should be stooped after logging.
      *
      * @since    1.0.0
      */
     public static function output( $value, bool $exit = false ) {
         echo sprintf( '<pre %1$s>', is_admin() ? 'style="margin-left: 180px;"' : '' );
 
-        if (is_array($value) || is_object($value)) {
-            print_r($value);
+        if ( is_array( $value ) || is_object( $value ) ) {
+            print_r( $value );
         } else {
             echo $value;
         }
 
-        echo "</pre>";
+        echo '</pre>';
 
-        if ($exit) {
+        if ( $exit ) {
             wp_die();
         }
     }
